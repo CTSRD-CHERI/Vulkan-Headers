@@ -3112,13 +3112,21 @@ namespace VULKAN_HPP_NAMESPACE
         return ::vkDestroyPrivateDataSlot( device, privateDataSlot, pAllocator );
       }
 
+#if defined(__CHERI_PURE_CAPABILITY__)
+      VkResult vkSetPrivateData( VkDevice device, VkObjectType objectType, uintptr_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t data ) const
+#elif   // !__CHERI_PURE_CAPABILITY__
       VkResult vkSetPrivateData( VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t data ) const
+#endif  // !__CHERI_PURE_CAPABILITY__
         VULKAN_HPP_NOEXCEPT
       {
         return ::vkSetPrivateData( device, objectType, objectHandle, privateDataSlot, data );
       }
 
+#if defined(__CHERI_PURE_CAPABILITY__)
+      void vkGetPrivateData( VkDevice device, VkObjectType objectType, uintptr_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t * pData ) const
+#elif   // !__CHERI_PURE_CAPABILITY__
       void vkGetPrivateData( VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t * pData ) const
+#endif  // !__CHERI_PURE_CAPABILITY__
         VULKAN_HPP_NOEXCEPT
       {
         return ::vkGetPrivateData( device, objectType, objectHandle, privateDataSlot, pData );
@@ -5795,13 +5803,21 @@ namespace VULKAN_HPP_NAMESPACE
         return ::vkDestroyPrivateDataSlotEXT( device, privateDataSlot, pAllocator );
       }
 
+#if defined(__CHERI_PURE_CAPABILITY__)
+      VkResult vkSetPrivateDataEXT( VkDevice device, VkObjectType objectType, uintptr_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t data ) const
+#elif   // !__CHERI_PURE_CAPABILITY__
       VkResult vkSetPrivateDataEXT( VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t data ) const
+#endif  // !__CHERI_PURE_CAPABILITY__
         VULKAN_HPP_NOEXCEPT
       {
         return ::vkSetPrivateDataEXT( device, objectType, objectHandle, privateDataSlot, data );
       }
 
+#if defined(__CHERI_PURE_CAPABILITY__)
+      void vkGetPrivateDataEXT( VkDevice device, VkObjectType objectType, uintptr_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t * pData ) const
+#elif   // !__CHERI_PURE_CAPABILITY__
       void vkGetPrivateDataEXT( VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t * pData ) const
+#endif  // !__CHERI_PURE_CAPABILITY__
         VULKAN_HPP_NOEXCEPT
       {
         return ::vkGetPrivateDataEXT( device, objectType, objectHandle, privateDataSlot, pData );
